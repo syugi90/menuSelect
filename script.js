@@ -17,7 +17,6 @@ let tagList = [
   {grpId:1 , tagId:3 , name:"일식"     ,checkYn : ""},
   {grpId:1 , tagId:4 , name:"중식"     ,checkYn : ""},
   {grpId:1 , tagId:5 , name:"분식"     ,checkYn : ""},
-  {grpId:1 , tagId:6 , name:"중식"     ,checkYn : ""},
   {grpId:2 , tagId:7 , name:"매운거"     ,checkYn : ""},
   {grpId:2 , tagId:8 , name:"안매운거"   ,checkYn : ""},
   {grpId:3 , tagId:9 , name:"고기"     ,checkYn : ""},
@@ -29,21 +28,22 @@ let tagList = [
   {grpId:5 , tagId:15 , name:"든든하게" ,checkYn : ""}
 ];
 
-const getTagListByGrpId = (grpId) => {
-  const list = tagList.filter((t) => (t.checkYn === '' && (t.grpId === grpId)))
-  return list;
-}
-
 const setTagName = (grpId) => {
-  const filterTags = getTagListByGrpId(grpId);
+  const filterTags = tagList.filter((t) => (t.checkYn === '' && (t.grpId === grpId)));
 
   if(filterTags.length >= 2){
     leftSelect.innerHTML  = filterTags[0].name;
     leftSelect.id         = filterTags[0].tagId;
     rightSelect.innerHTML = filterTags[1].name;
     rightSelect.id        = filterTags[1].tagId;
-  }else{
-    console.log("여기오나");
+
+  }else if(filterTags.length == 1){
+    const list = tagList.filter((t) => (t.checkYn === 'Y' && (t.grpId === grpId)))
+
+    leftSelect.innerHTML  = list[0].name;
+    leftSelect.id         = list[0].tagId;
+    rightSelect.innerHTML = filterTags[0].name;
+    rightSelect.id        = filterTags[0].tagId;
   }
 }
 
@@ -113,7 +113,7 @@ const displayTegList = () => {
 
 function init(){
   
-  setTagName(2);
+  setNextTag();
   
   //alert(leftMenu);
   //leftMenu.innerHTML  = "";
