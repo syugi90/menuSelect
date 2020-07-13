@@ -114,9 +114,6 @@ const displayTegList = () => {
 function init(){
   
   setNextTag();
-  
-  //alert(leftMenu);
-  //leftMenu.innerHTML  = "";
 }
 
 init();
