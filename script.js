@@ -1,5 +1,8 @@
 const leftSelect = document.querySelector('.left-select');
 const rightSelect = document.querySelector('.right-select');
+const divTags = document.querySelector('.div-tags');
+const divMenus = document.querySelector('.div-menus');
+
 
 let selectTagList = [];
 
@@ -86,6 +89,27 @@ let menuTag = [
    {menuId:19, grpId:4 , tagId:13} ,
 ];
 
+const setMenuList = () => {
+  
+  displayMenuList(); //TEST
+  
+  divTags.classList.add("hidden");
+  divMenus.classList.remove("hidden");
+  
+  const liMenu = document.querySelector('.li-menu');
+  
+  menuList.forEach((m) => { 
+    if (m.selectYn !== 'N') {
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      span.innerText = m.name;
+      li.appendChild(span);
+      liMenu.appendChild(li);
+    }
+  })
+
+}
+
 const getMenuList = () => {
    tagList.forEach((t) => { 
      if (t.selectYn === 'N'){
@@ -104,7 +128,8 @@ const getMenuList = () => {
   //menuList.filter((m)=> (m.selectYn !== 'N'));
   console.log(menuList);
   
-  displayMenuList();
+  setMenuList();
+  
 }
 
 const setTagName = (grpId) => {
