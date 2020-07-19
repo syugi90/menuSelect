@@ -24,6 +24,5 @@ module.exports = class TagGrp extends Sequelize.Model {
   }
 
   static associate(db) {
-    //db.User.hasMany(db.Tag, { foreignKey: 'grp_id', sourceKey: 'id' });
   }
 };

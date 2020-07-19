@@ -24,6 +24,7 @@ module.exports = class TagGrp extends Sequelize.Model {
   }
 
   static associate(db) {
-    //db.Tag.belongsTo(db.TagGrp, { foreignKey: 'grp_id', targetKey: 'id' });
+    db.Tag.belongsTo(db.TagGrp, { as: 'grp' });
+		db.Menu.belongsToMany(db.Tag, {through: 'MenuTag'});
   }
 };

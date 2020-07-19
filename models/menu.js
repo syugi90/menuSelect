@@ -28,6 +28,6 @@ module.exports = class Menu extends Sequelize.Model {
   }
 
   static associate(db) {
-    //db.Tag.belongsTo(db.TagGrp, { foreignKey: 'grp_id', targetKey: 'id' });
+    db.Menu.belongsToMany(db.Tag, {through: 'MenuTag'});
   }
 };
